@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomColor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'times new roman', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        #range {
+            width: 120px;
+            height: 50px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 id="color">#008b3b</h1>
+        <button id="range" type="button">New color</button>
+    </div>
+    <script>
+        const color = document.getElementById('color'),
+            range = document.getElementById('range');
+
+       
+       const setColor = function(){
+        document.body.style.backgroundColor = color.textContent;
+        range.style.color = color.textContent;
+       }
+
+            range.addEventListener('click', function () {
+            const randomColor = Math.floor(Math.random() * 99999);
+            const hexColor = randomColor.toString(16);
+            const paddedHexColor = "#" + ("000000" + hexColor).slice(-6);
+            color.textContent = paddedHexColor;
+            setColor();
+        })
+
+        color.style.color = 'white';
+        setColor();
+
+    </script>
+</body>
+
+</html>
